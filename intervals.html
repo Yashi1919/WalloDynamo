@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions for RandomWallpaper Component</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #00796b;
+        }
+        h2 {
+            color: #00796b;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Intervals</h1>
+
+    <h2>Overview</h2>
+    <p>
+        The <strong>RandomWallpaper</strong> component allows users to change their device wallpaper at specified intervals using images from their library. Users can add images, set a time interval, and toggle the wallpaper change on and off.
+    </p>
+
+    <h2>Features</h2>
+    <ul>
+        <li>Add images from the device's image library.</li>
+        <li>Set time intervals for wallpaper changes (in seconds, minutes, or hours).</li>
+        <li>Toggle wallpaper changes on or off.</li>
+        <li>View and remove added images from the list.</li>
+    </ul>
+
+    <h2>How to Use</h2>
+
+    <h3>1. Adding Images</h3>
+    <p>
+        To add images from your library, click the <strong>"Add Images from Library"</strong> button. You can select multiple images, and they will be displayed in a grid format.
+    </p>
+
+    <h3>2. Setting Time Intervals</h3>
+    <p>
+        Enter a numeric value in the input field (e.g., 5) to specify the time interval. Use the dropdown to select the unit of time (seconds, minutes, or hours) for the wallpaper change.
+    </p>
+
+    <h3>3. Toggling Wallpaper Change</h3>
+    <p>
+        Use the toggle switch labeled <strong>"Enable Wallpaper Change"</strong> to start or stop the automatic wallpaper changes. If the toggle is on, the wallpaper will change at the intervals you set.
+    </p>
+
+    <h3>4. Removing Images</h3>
+    <p>
+        To remove an image, long press on the image in the list. You will be prompted to confirm the deletion.
+    </p>
+
+    <h2>Notes</h2>
+    <div class="note">
+        <strong>Important:</strong> Make sure to allow necessary permissions for accessing the device's photo library and enabling background tasks for seamless wallpaper changes.
+    </div>
+
+    <h2>Troubleshooting</h2>
+    <p>
+        If you encounter any issues, ensure that you have the required libraries installed and that you are testing the component on a compatible device.
+    </p>
+</body>
+</html>
