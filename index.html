@@ -8,47 +8,86 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
-            color: #00796b; /* Keeping text color as specified */
+            color: #00796b;
             text-align: center;
         }
+
         h1 {
             color: #004d40;
-            margin-bottom: 5px; /* Reduce space below the header */
+            margin-bottom: 5px;
+            font-size: 2em; /* Default size */
         }
+
         p {
-            margin: 0; /* Removing default margin */
+            margin: 0;
+            font-size: 1em; /* Default size */
         }
+
+        a {
+            font-size: 1em; /* Default link size */
+        }
+
         table {
             padding-top: 60px;
-            width: 60%; /* Adjusted table width for better fit */
-            margin: 0 auto; /* Center the table */
+            width: 60%;
+            margin: 0 auto;
             border-collapse: collapse;
         }
+
         td {
-            width: 50%; /* Ensures equal width distribution for both columns */
-            padding: 15px; /* Adjusted padding for better spacing */
-            text-align: center; /* Centering text within the columns */
+            width: 50%;
+            padding: 15px;
+            text-align: center;
             vertical-align: top;
         }
+
         a {
-            color: inherit; /* Keeping links in default color */
+            color: inherit;
             text-decoration: underline;
         }
+
         a:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
+
         hr {
-            width: 60%; /* Matches the width of the table */
-            margin: 40px auto; /* Centers the horizontal line */
+            width: 60%;
+            margin: 40px auto;
         }
+
         footer {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #00796b; /* Matching color for footer separator */
+            border-top: 1px solid #00796b;
         }
+
         .footer-note {
             font-size: 0.8em;
             margin-top: 10px;
+        }
+
+        /* Media Query for mobile devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em; /* Reduce header size on mobile */
+            }
+
+            p, a {
+                font-size: 0.9em; /* Reduce paragraph and link size on mobile */
+            }
+
+            table {
+                width: 90%; /* Make the table take more space on mobile */
+                padding-top: 40px;
+            }
+
+            td {
+                padding: 10px;
+            }
+
+            hr {
+                width: 80%; /* Adjust the width of hr on mobile */
+            }
         }
     </style>
 </head>
