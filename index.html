@@ -8,85 +8,47 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
-            color: #00796b;
+            color: #00796b; /* Keeping text color as specified */
             text-align: center;
-            margin: 0;
-            padding: 0;
         }
-
         h1 {
             color: #004d40;
-            margin-bottom: 5px;
+            margin-bottom: 5px; /* Reduce space below the header */
         }
-
         p {
-            margin: 0;
+            margin: 0; /* Removing default margin */
         }
-
-        header {
-            padding: 20px;
+        table {
+            padding-top: 60px;
+            width: 60%; /* Adjusted table width for better fit */
+            margin: 0 auto; /* Center the table */
+            border-collapse: collapse;
         }
-
-        hr {
-            width: 60%;
-            margin: 20px auto;
+        td {
+            width: 50%; /* Ensures equal width distribution for both columns */
+            padding: 15px; /* Adjusted padding for better spacing */
+            text-align: center; /* Centering text within the columns */
+            vertical-align: top;
         }
-
-        main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .flex-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap; /* Allow wrapping for mobile */
-            justify-content: center; /* Center the content */
-            align-items: flex-start;
-            width: 90%; /* Better for smaller devices */
-            max-width: 800px;
-            margin-top: 20px;
-        }
-
-        .flex-item {
-            flex: 1 1 45%; /* Flex-grow: 1, Flex-shrink: 1, and take 45% of the container */
-            margin: 10px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #00796b;
-            border-radius: 8px;
-        }
-
         a {
-            color: inherit;
+            color: inherit; /* Keeping links in default color */
             text-decoration: underline;
         }
-
         a:hover {
             text-decoration: none;
         }
-
+        hr {
+            width: 60%; /* Matches the width of the table */
+            margin: 40px auto; /* Centers the horizontal line */
+        }
         footer {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #00796b;
+            border-top: 1px solid #00796b; /* Matching color for footer separator */
         }
-
         .footer-note {
             font-size: 0.8em;
             margin-top: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .flex-item {
-                flex: 1 1 100%; /* On small screens, take up the full width */
-            }
-
-            hr {
-                width: 90%;
-            }
         }
     </style>
 </head>
@@ -99,22 +61,24 @@
     </header>
 
     <main>
-        <div class="flex-container">
-            <div class="flex-item">
-                <a href="message.html">Message from the Developer</a><br><br>
-                <a href="instructions.html">Instructions</a><br><br>
-                <a href="privacy.html">Privacy Policy</a><br><br>
-                <a href="compatablity.html">Compatability</a><br><br>
-                <a href="socialmedia.html">Social Media</a><br><br>
-            </div>
-            <div class="flex-item">
-                <a href="download.html">Download App</a><br><br>
-                <a href="toseelist.html">ToSeeList</a><br><br>
-                <a href="specials.html">Specials</a><br><br>
-                <a href="intervals.html">Intervals</a><br><br>
-                <a href="updates.html">Updates of app</a><br><br>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <a href="message.html">Message from the Developer</a><br><br>
+                    <a href="instructions.html">Instructions</a><br><br>
+                    <a href="privacy.html">Privacy Policy</a><br><br>
+                    <a href="compatablity.html">Compatability</a><br><br>
+                    <a href="socialmedia.html">Social Media</a><br><br>
+                </td>
+                <td>
+                    <a href="download.html">Download App</a><br><br>
+                    <a href="toseelist.html">ToSeeList</a><br><br>
+                    <a href="specials.html">Specials</a><br><br>
+                    <a href="intervals.html">Intervals</a><br><br>
+                    <a href="updates.html">Updates of app</a><br><br>
+                </td>
+            </tr>
+        </table>
     </main>
 
     <footer>
