@@ -176,7 +176,7 @@
             try {
                 const docSnapshot = await getDoc(visitorRef);
                 if (docSnapshot.exists()) {
-                    document.getElementById('visitor-count').innerText = `Visitors: ${docSnapshot.data().count}`;
+                    document.getElementById('visitor-count').innerText = `Visits done: ${docSnapshot.data().count}`;
                 } else {
                     document.getElementById('visitor-count').innerText = 'Visitors: 0';
                 }
