@@ -15,16 +15,16 @@
         h1 {
             color: #004d40;
             margin-bottom: 5px;
-            font-size: 2em; /* Default size */
+            font-size: 2em;
         }
 
         p {
             margin: 0;
-            font-size: 1em; /* Default size */
+            font-size: 1em;
         }
 
         a {
-            font-size: 1em; /* Default link size */
+            font-size: 1em;
         }
 
         table {
@@ -69,15 +69,15 @@
         /* Media Query for mobile devices */
         @media (max-width: 768px) {
             h1 {
-                font-size: 1.5em; /* Reduce header size on mobile */
+                font-size: 1.5em;
             }
 
             p, a {
-                font-size: 0.9em; /* Reduce paragraph and link size on mobile */
+                font-size: 0.9em;
             }
 
             table {
-                width: 90%; /* Make the table take more space on mobile */
+                width: 90%;
                 padding-top: 40px;
             }
 
@@ -86,7 +86,7 @@
             }
 
             hr {
-                width: 80%; /* Adjust the width of hr on mobile */
+                width: 80%;
             }
         }
     </style>
@@ -97,6 +97,7 @@
         <h1>WalloDynamo</h1>
         <p>Ongole<br>Official Home Page</p>
         <hr>
+        <p id="visitor-count">Visitors: Loading...</p>
     </header>
 
     <main>
@@ -127,5 +128,65 @@
         </div>
     </footer>
 
+    <script type="module">
+        // Import the Firebase SDK functions you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHHod-Gi7IKGuFQJqDBMl4uF6WapPegmA",
+            authDomain: "download-counter-639c0.firebaseapp.com",
+            projectId: "download-counter-639c0",
+            storageBucket: "download-counter-639c0.appspot.com",
+            messagingSenderId: "550303041805",
+            appId: "1:550303041805:web:70faf5b953e9a7d261c844",
+            measurementId: "G-CETXGJC36M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function updateVisitorCount() {
+            const visitorRef = doc(db, 'visitors', 'count');
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const docSnapshot = await transaction.get(visitorRef);
+                    if (!docSnapshot.exists()) {
+                        transaction.set(visitorRef, { count: 1 });
+                    } else {
+                        const newCount = docSnapshot.data().count + 1;
+                        transaction.update(visitorRef, { count: newCount });
+                    }
+                });
+
+                // Load the updated visitor count
+                loadVisitorCount();
+            } catch (error) {
+                console.error('Transaction failed: ', error);
+                document.getElementById('visitor-count').innerText = 'Visitors: Failed to load';
+            }
+        }
+
+        async function loadVisitorCount() {
+            const visitorRef = doc(db, 'visitors', 'count');
+            try {
+                const docSnapshot = await getDoc(visitorRef);
+                if (docSnapshot.exists()) {
+                    document.getElementById('visitor-count').innerText = `Visitors: ${docSnapshot.data().count}`;
+                } else {
+                    document.getElementById('visitor-count').innerText = 'Visitors: 0';
+                }
+            } catch (error) {
+                console.error('Error getting document:', error);
+                document.getElementById('visitor-count').innerText = 'Visitors: Failed to load';
+            }
+        }
+
+        // Update the visitor count and display it when the page loads
+        window.onload = updateVisitorCount;
+    </script>
 </body>
 </html>
