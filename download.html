@@ -57,7 +57,7 @@
         <p><b>This app is not at all harmful and works without internet. You can download it below:</b></p>
         <p>Click the button below to download our app and start enjoying its features!</p>
         <p>Make sure to enable installation from unknown sources in your device settings if prompted.</p>
-        <a class="download-button" href="WalloDynamo.apk" download="WalloDynamo.apk" onclick="incrementDownloadCount()">Download Now</a>
+        <a class="download-button" href="WalloDynamo.apk" download="WalloDynamo.apk">Download Now</a>
         <p>Downloads: <span id="download-count" class="loading">Loading...</span></p>
         <p id="error-message" class="error"></p>
     </div>
@@ -117,6 +117,12 @@
             }
         }
 
+        // Set up event listener on the download button
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.download-button').addEventListener('click', incrementDownloadCount);
+        });
+
+        // Load the initial download count when the page loads
         window.onload = loadDownloadCount;
     </script>
 </body>
