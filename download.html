@@ -42,6 +42,13 @@
         a.download-button:hover {
             background-color: #1a6275;
         }
+        .loading {
+            font-size: 14px;
+            color: #888;
+        }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +58,8 @@
         <p>Click the button below to download our app and start enjoying its features!</p>
         <p>Make sure to enable installation from unknown sources in your device settings if prompted.</p>
         <a class="download-button" href="WalloDynamo.apk" download="WalloDynamo.apk" onclick="incrementDownloadCount()">Download Now</a>
-        <p>Downloads: <span id="download-count">Loading...</span></p>
+        <p>Downloads: <span id="download-count" class="loading">Loading...</span></p>
+        <p id="error-message" class="error"></p>
     </div>
 
     <script type="module">
@@ -90,6 +98,7 @@
                 loadDownloadCount(); // Update the displayed count after incrementing
             } catch (error) {
                 console.error('Transaction failed: ', error);
+                document.getElementById('error-message').innerText = 'Failed to update the download count. Please try again later.';
             }
         }
 
@@ -104,6 +113,7 @@
                 }
             } catch (error) {
                 console.error('Error getting document:', error);
+                document.getElementById('error-message').innerText = 'Failed to load the download count. Please try again later.';
             }
         }
 
