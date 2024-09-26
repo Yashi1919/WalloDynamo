@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Wallodynamoright</title>
+    <title>Download WalloDynamo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,10 +47,67 @@
 <body>
     <div class="container">
         <h1>Download WalloDynamo</h1>
-        <p><b>This app is not at all harmfull works without internet also you can download it</b></p>
+        <p><b>This app is not at all harmful and works without internet. You can download it below:</b></p>
         <p>Click the button below to download our app and start enjoying its features!</p>
         <p>Make sure to enable installation from unknown sources in your device settings if prompted.</p>
-        <a class="download-button" href="WalloDynamo.apk" download="WalloDynamo.apk">Download Now</a>
+        <a class="download-button" href="WalloDynamo.apk" download="WalloDynamo.apk" onclick="incrementDownloadCount()">Download Now</a>
+        <p>Downloads: <span id="download-count">Loading...</span></p>
     </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHHod-Gi7IKGuFQJqDBMl4uF6WapPegmA",
+            authDomain: "download-counter-639c0.firebaseapp.com",
+            projectId: "download-counter-639c0",
+            storageBucket: "download-counter-639c0.appspot.com",
+            messagingSenderId: "550303041805",
+            appId: "1:550303041805:web:70faf5b953e9a7d261c844",
+            measurementId: "G-CETXGJC36M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function incrementDownloadCount() {
+            const counterRef = doc(db, 'counters', 'downloads');
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const docSnapshot = await transaction.get(counterRef);
+                    if (!docSnapshot.exists()) {
+                        transaction.set(counterRef, { count: 1 });
+                    } else {
+                        const newCount = docSnapshot.data().count + 1;
+                        transaction.update(counterRef, { count: newCount });
+                    }
+                });
+                loadDownloadCount(); // Update the displayed count after incrementing
+            } catch (error) {
+                console.error('Transaction failed: ', error);
+            }
+        }
+
+        async function loadDownloadCount() {
+            const counterRef = doc(db, 'counters', 'downloads');
+            try {
+                const docSnapshot = await getDoc(counterRef);
+                if (docSnapshot.exists()) {
+                    document.getElementById('download-count').innerText = docSnapshot.data().count;
+                } else {
+                    document.getElementById('download-count').innerText = '0';
+                }
+            } catch (error) {
+                console.error('Error getting document:', error);
+            }
+        }
+
+        window.onload = loadDownloadCount;
+    </script>
 </body>
 </html>
